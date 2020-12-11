@@ -1,0 +1,42 @@
+<div *ngIf= "!getUsername()"> 
+    <button class="btn btn-primary" (click)= "login()">Login</button>
+</div>
+<div class="jumbotron" *ngIf= "getUsername()">    
+  <div class="container"> 
+    <button class="btn btn-primary" (click)= "logout()">Logout</button>    
+    <h1>Hello,  Professor Rabinovich</h1>  
+      <div class="row">             
+          <div class="col-sm">
+              <a href="/Authors"
+              role="button"
+              class="btn btn-outline-primary btn-lg btn-block text-center">
+             <span><i class="fa fa-users"></i></span>
+             <br>Authors
+           </a>
+           <div class="card" style="width: 18rem; ">
+              <img src="/assets/images/typing.jpg" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">Great Authors</h5>
+                <p class="card-text">Some authors of our time.</p>
+                <a href="/Authors" class="btn btn-primary">Click to see list of Authors</a>                
+              </div>
+            </div>
+          </div>
+          <div class="col-sm">
+              <a href="/Books"
+              role="button"
+              class="btn btn-outline-primary btn-lg btn-block text-center">
+             <span><i class="fa fa-book"></i></span>
+             <br>Books
+           </a>
+           <div class="card" style="width: 18rem;">
+              <img src="/assets/images/books.jpg" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">Novels</h5>
+                <p class="card-text">View our Library</p>
+                <a href="/Books" class="btn btn-primary">Click to see list of available Books</a>
+              </div>
+            </div>
+          </div>
+  </div>
+</div>
