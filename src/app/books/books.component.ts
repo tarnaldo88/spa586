@@ -49,7 +49,7 @@ export class BooksComponent implements OnInit {
   }
 
   getBooks(){
-    this.httpClient.get<any>('http://54.67.104.178/Server/api/Books').subscribe(
+    this.httpClient.get<any>('http://13.52.231.44/Server/api/Books').subscribe(
       response => {
         console.log(response);
         this.books = response;
@@ -58,11 +58,17 @@ export class BooksComponent implements OnInit {
   }
 
   getAuthors(){
-    this.httpClient.get<any>('http://54.67.104.178/Server/api/Authors').subscribe(
+    this.httpClient.get<any>('http://13.52.231.44/Server/api/Authors').subscribe(
       response => {
         console.log(response);
         this.authors = response;
       }
+    );
+  }
+
+  postAuthor(data: string){
+    let jsonData = JSON.stringify(
+      {name: data}
     );
   }
 
@@ -84,4 +90,13 @@ export class BooksComponent implements OnInit {
       return claims; 
     }
   }
+  //chosenAuth: Author;
+  authorId: 0;
+
+  // showAuth(selected: Author){
+  //   if(this.chosenAuth != selected){
+  //     this.chosenAuth = selected;
+  //     this.authorId = selected.authorId;
+  //   }
+  // }
 }

@@ -37,7 +37,9 @@ export class HomeComponent implements OnInit {
     }else {
       //in tut had claims['name'] but doesnt work right now for reasons unknown   
       console.log(claims);   
-      return claims; 
+      let str = "";
+      str = claims['name'];
+      return str; 
     }
   }
 

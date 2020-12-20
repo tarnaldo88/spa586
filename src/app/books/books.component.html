@@ -1,15 +1,5 @@
-<div *ngIf= "!getUsername()"> 
-  <button class="btn btn-primary" (click)= "login()">Login</button>
-</div>
-<div class="container" *ngIf= "getUsername()">
-  <button class="btn btn-primary" (click)= "logout()">Logout</button>    
-    <h1>Hello,  Professor Rabinovich</h1> 
-    <a href="/"
-        role="button"
-        class="btn btn-outline-primary btn-lg btn-block text-center">
-       <span><i class="fa fa-home"></i></span>
-       <br>Return Home
-     </a>
+
+<div class="container" >   
      <h4>Our List of Novels</h4>
      <select class="form-control">
         <option *ngFor="let book of books" value={{book}}>
@@ -19,7 +9,7 @@
       <h6>List of Authors</h6>
       <select class="form-control">
         <option *ngFor="let author of authors" value={{author}}>
-          {{author.Name}} ID: {{author.AuthorId}}
+          {{author.name}} ID: {{author.authorId}}
         </option>
       </select>
     <table class="table table-bordered table-striped">
@@ -32,13 +22,12 @@
       </tr>
       </thead>
       <tbody>
-
-      <tr *ngFor="let book of books" >
-        <td><span>{{book.BookId}}</span></td>
-        <td><span>{{book.AuthorId}}</span></td>
+      <tr *ngFor="let book of books"  (click)="showAuth(author)">
+        <td><span>{{book.bookId}}</span></td>
+        <td><span>{{book.authorId}}</span></td>
         <td><span>{{book.title}}</span></td>
         <td><span>${{book.price}}</span></td>
       </tr>
-      </tbody>
-    </table>
+      </tbody>   
+    </table>    
   </div>

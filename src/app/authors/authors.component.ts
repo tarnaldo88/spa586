@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import {OAuthService, AuthConfig} from 'angular-oauth2-oidc';
 
 export class Authors {
   constructor(
@@ -8,12 +7,6 @@ export class Authors {
     public Name: string
   ) {
   }
-}
-
-export const authConfig: AuthConfig = {
-  issuer : 'https://dev-2879688.okta.com/oauth2/default',
-  redirectUri: window.location.origin,
-  clientId : "0oa28wzrvNG7ucqsZ5d6",
 }
 
 @Component({
@@ -24,9 +17,7 @@ export const authConfig: AuthConfig = {
 export class AuthorsComponent implements OnInit {
 
   authors: Authors[] = [];
-  constructor(private httpClient: HttpClient, private oauthService: OAuthService){
-      this.oauthService.configure(authConfig);
-      this.oauthService.loadDiscoveryDocumentAndTryLogin();
+  constructor(private httpClient: HttpClient){
   }
 
   ngOnInit(): void {
@@ -34,7 +25,7 @@ export class AuthorsComponent implements OnInit {
   }
 
   getAuthors(){
-    this.httpClient.get<any>('http://54.67.104.178/Server/api/Authors').subscribe(
+    this.httpClient.get<any>('http://13.52.231.44/Server/api/Authors').subscribe(
       response => {
         console.log(response);
         this.authors = response;
@@ -42,25 +33,20 @@ export class AuthorsComponent implements OnInit {
     );
   }
 
-  login(){
-    console.log("inside login func");
-    this.oauthService.initImplicitFlow();
+  onSubmit(data){      
+    console.log(data);
+    this.httpClient.post('http://13.52.231.44/Server/api/Authors', data)
+    .subscribe((result)=>{
+      console.log("result", result)
+    })
   }
-  logout(){
-    this.oauthService.logOut();
-  }
-  getUsername(){
-    const claims = this.oauthService.getIdentityClaims();
-   
-    if(!claims){
-      return null;
-    }else {
-      //in tut had claims['name'] but doesnt work right now for reasons unknown   
-      console.log(claims);   
-      return claims; 
-    }
-  }
-  getName(){
-    return this.oauthService.getIdentityClaims();
-  }
+
+
 }
+
+
+// <form #userPost="ngForm" (ngSubmit) = "onSubmit(userPost.value)" >
+//         <label for="fname">Enter a New Author </label><br>
+//         <input type="text"  name="name" ngModel><br><br>        
+//         <button class="btn btn-primary" type="submit"> Submit </button>
+//       </form>

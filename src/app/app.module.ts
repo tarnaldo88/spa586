@@ -9,6 +9,7 @@ import { HomeComponent } from './home/home.component';
 import { AuthorsComponent } from './authors/authors.component';
 import { BooksComponent } from './books/books.component';
 import {OAuthModule} from 'angular-oauth2-oidc';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -23,8 +24,9 @@ import {OAuthModule} from 'angular-oauth2-oidc';
     NgbModule,
     HttpClientModule,
     OAuthModule.forRoot(),
+    FormsModule,
   ],
-  providers: [],
+  providers: [],  
   bootstrap: [AppComponent]
 })
 export class AppModule { }

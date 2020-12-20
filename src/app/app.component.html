@@ -1,3 +1,49 @@
 <h1 class="btn btn-outline-primary btn-lg btn-block text-center">COMP 586 SPA Project By: Arnaldo Torres</h1>
-<hr>
+<div class="jumbotron">  
+    <div class="container"> 
+      <div class = "row">
+        <div class ="col-sm" *ngIf= "!getUsername()"> 
+          <button class="btn btn-primary" (click)= "login()">Login</button>
+        </div>
+        <div class ="col-sm" *ngIf= "getUsername()"> 
+          <button class="btn btn-primary" (click)= "logout()">Logout</button>    
+            <h1>Welcome, {{getUsername()}}</h1>  
+        </div>    
+      </div>      
+    <div class="row">             
+        <div class="col-sm">
+            <a href="http://13.52.231.44/angFront/Authors"
+            role="button"
+            class="btn btn-outline-primary btn-lg btn-block text-center">
+            <span><i class="fa fa-users"></i></span>
+            <br>Authors
+            </a>
+            <div class="card" style="width: 18rem; ">
+            <img src="spa586/assets/images/typing.jpg" class="card-img-top">
+            <div class="card-body">
+                <h5 class="card-title">Great Authors</h5>
+                <p class="card-text">Some authors of our time.</p>
+                <a href="http://13.52.231.44/angFront/Authors" class="btn btn-primary">Click to see list of Authors</a>                
+            </div>
+            </div>
+        </div>
+        <div class="col-sm">
+            <a href="http://13.52.231.44/angFront/Books"
+            role="button"
+            class="btn btn-outline-primary btn-lg btn-block text-center">
+            <span><i class="fa fa-book"></i></span>
+            <br>Books
+            </a>
+            <div class="card" style="width: 18rem;">
+            <img src="spa586/assets/images/books.jpg" class="card-img-top">
+            <div class="card-body">
+                <h5 class="card-title">Novels</h5>
+                <p class="card-text">View our Library</p>
+                <a href="http://13.52.231.44/angFront/Books" class="btn btn-primary">Click to see list of available Books</a>
+            </div>
+            </div>
+        </div>
+    </div>
+  </div>
+
 <router-outlet></router-outlet> 

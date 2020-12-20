@@ -1,21 +1,14 @@
-<div *ngIf= "!getUsername()"> 
-  <button class="btn btn-primary" (click)= "login()">Login</button>
-</div>
-<div class="container" *ngIf= "getUsername()">
-  <button class="btn btn-primary" (click)= "logout()">Logout</button>    
-    <h1>Hello, Professor Rabinovich</h1> 
-    <a href="/"
-        role="button"
-        class="btn btn-outline-primary btn-lg btn-block text-center">
-       <span><i class="fa fa-home"></i></span>
-       <br>Return Home
-     </a>
+
+<div class="container" > 
      <h4>Our List of Authors</h4>
      <select class="form-control">
         <option *ngFor="let author of authors" value={{author}}>
-          {{author.Name}}
+          {{author.name}}
         </option>
       </select>
+      <br>
+      
+      
     <table class="table table-bordered table-striped">
       <thead>
       <tr>
@@ -25,8 +18,8 @@
       </thead>
       <tbody>
       <tr *ngFor="let author of authors">
-        <td><span>{{author.AuthorId}}</span></td>
-        <td><span>{{author.Name}}</span></td>
+        <td><span>{{author.authorId}}</span></td>
+        <td><span>{{author.name}}</span></td>
       </tr>
       </tbody>
     </table>
